@@ -2,6 +2,7 @@
 import { useState } from "react";
 import ScheduleSelector from "react-schedule-selector";
 import { addWeeks, subWeeks } from "date-fns";
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 export default function WeeklyScheduler() {
   const [selection, setSelection] = useState<Date[]>([]);
@@ -14,15 +15,15 @@ export default function WeeklyScheduler() {
         <div className="flex gap-2">
           <button
             onClick={() => setStartDate(prev => subWeeks(prev, 1))}
-            className="text-sm px-3 py-1 bg-blue-400 hover:bg-blue-500 rounded text-white"
+            className="text-sm px-3 py-1 bg-blue-500 hover:bg-blue-600 rounded text-white flex items-center gap-1 cursor-pointer"
           >
-            ← Semana anterior
+            <ArrowLeft size={18}/> Semana anterior
           </button>
           <button
             onClick={() => setStartDate(prev => addWeeks(prev, 1))}
-            className="text-sm px-3 py-1 bg-blue-400 hover:bg-blue-500 rounded text-white"
+            className="text-sm px-3 py-1 bg-blue-500 hover:bg-blue-600 rounded text-white flex items-center gap-1 cursor-pointer"
           >
-            Semana siguiente →
+            Semana siguiente <ArrowRight size={18}/>
           </button>
         </div>
       </div>

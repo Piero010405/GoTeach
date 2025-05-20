@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "core-js": "^3.42.0",
+    "lucide-react": "^0.511.0",
     "next": "15.3.2",
     "next-auth": "^4.24.11",
     "postcss": "^8.5.3",

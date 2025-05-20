@@ -3,6 +3,22 @@
 import { useSession } from "next-auth/react";
 import Navbar from "@/components/navbar";
 import { useParams, useRouter } from "next/navigation";
+import { Star, Heart } from "lucide-react";
+
+function Estrellas({ count }: { count: number }) {
+  return (
+    <div className="flex gap-1 text-yellow-500">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <Star
+          key={i}
+          size={18}
+          fill={i < count ? "#facc15" : "none"}
+          stroke="#facc15"
+        />
+      ))}
+    </div>
+  );
+}
 
 export default function MentorProfilePage() {
   const { id } = useParams();
@@ -148,7 +164,7 @@ export default function MentorProfilePage() {
                     className="border rounded-lg p-4 bg-gray-50 text-sm text-gray-600"
                   >
                     <p className="font-semibold text-black">{op.titulo}</p>
-                    <p className="text-yellow-500">{"⭐".repeat(op.estrellas)}</p>
+                    <p className="text-yellow-500"><Estrellas count={op.estrellas} /></p>
                     <p className="italic text-xs text-gray-500">{op.fecha}</p>
                     <p className="mt-2">{op.comentario}</p>
                   </div>
@@ -162,7 +178,7 @@ export default function MentorProfilePage() {
         <aside className="w-full lg:w-80">
           <div className="bg-white rounded-xl p-6 shadow-sm sticky top-6">
             <div className="flex items-center gap-2 mb-2">
-              <p className="text-yellow-500 text-lg font-bold">⭐ {mentor.rating}</p>
+              <p className="flex items-center gap-2 text-yellow-500 text-lg font-bold"><Star size={18} fill={"#facc15"} stroke="#facc15"/>{mentor.rating}</p>
               <p className="text-gray-600 text-sm">({mentor.reseñas} reseñas)</p>
             </div>
             <p className="text-sm text-gray-500 mb-4">{mentor.disponibilidad}</p>
@@ -175,8 +191,10 @@ export default function MentorProfilePage() {
             </button>
             <button 
               onClick={handleFavoritoClick}
-              className="border w-full py-2 rounded-md text-sm text-gray-500 border-gray-400 hover:bg-gray-50 cursor-pointer">
-              ❤️ Guardar como favorito
+              className="border w-full py-2 rounded-md text-sm text-gray-500 border-gray-400 hover:bg-gray-50 cursor-pointer flex items-center justify-center gap-2"
+            >
+              <Heart size={16} className="text-gray-500" />
+              Guardar como favorito
             </button>
           </div>
         </aside>

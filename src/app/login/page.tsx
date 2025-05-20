@@ -4,6 +4,7 @@
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { ArrowLeft } from 'lucide-react';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -34,12 +35,12 @@ export default function LoginPage() {
         <button
           type="button"
           onClick={() => router.back()}
-          className="absolute top-8 left-8 text-white hover:underline z-10 font-bold"
+          className="absolute top-8 left-8 text-white hover:underline z-10 font-bold flex items-center gap-2 cursor-pointer"
         >
-          ← Volver
+          <ArrowLeft /> Volver
         </button>
 
-        <div className="text-center">
+        <div className="flex flex-col items-center justify-center text-center w-full">
           <img src="/img/logo.png" alt="Logo" className="w-72 h-72 mb-6" />
           <h1 className="text-7xl font-extrabold mb-2">GoTeach</h1>
           <p className="text-xl mb-6">Encuentra tus mentorías ya!</p>

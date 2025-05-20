@@ -10,20 +10,35 @@ export const authOptions = {
         password: { label: "Contraseña", type: "password" },
       },
       async authorize(credentials) {
-        // Usuario hardcodeado
-        const user = {
-          id: "1",
-          name: "admin",
-          email: "admin@goteach.com",
-          image: "/img/mentor1.jpg",
-          role: "alumno", // o "mentor"
-        };
+        const users = [
+          {
+            id: "1",
+            name: "Alumno Demo",
+            email: "alumno@goteach.com",
+            password: "123",
+            image: "/img/alumno.jpg",
+            role: "alumno",
+          },
+          {
+            id: "2",
+            name: "Mentor Demo",
+            email: "mentor@goteach.com",
+            password: "123",
+            image: "/img/mentor1.jpg",
+            role: "mentor",
+          },
+        ];
 
-        if (
-          credentials?.email === "admin@goteach.com" &&
-          credentials?.password === "123"
-        ) {
-          return user;
+        const user = users.find(
+          (u) =>
+            u.email === credentials?.email &&
+            u.password === credentials?.password
+        );
+
+        if (user) {
+          // Nunca retornes la contraseña
+          const { password, ...safeUser } = user;
+          return safeUser;
         }
 
         return null;

@@ -1,8 +1,23 @@
 /* eslint-disable @next/next/no-img-element */
+"use client";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import Navbar from "@/components/navbar";
 import ScheduleGrid from "@/components/ScheduleGrid";
 
 export default function AgendarPage() {
+  const { data: session, status } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      router.push("/login");
+    }
+  }, [status, router]);
+
+  if (status === "loading") return <p>Cargando...</p>;
+
   return (
     <div className="bg-[#F5FAFF] h-full min-h-screen text-gray-500">
       <div className="h-fit bg-gradient-to-b from-blue-500 to-blue-900 text-white">
@@ -93,7 +108,7 @@ export default function AgendarPage() {
               </div>
             </div>
 
-            <button className="w-full bg-blue-600 text-white py-2 rounded-md font-semibold hover:bg-blue-700 transition-all">
+            <button onClick={() => router.push("/pagar")} className="w-full bg-blue-600 text-white py-2 rounded-md font-semibold hover:bg-blue-700 transition-all cursor-pointer">
               Confirmar y agendar
             </button>
           </div>
