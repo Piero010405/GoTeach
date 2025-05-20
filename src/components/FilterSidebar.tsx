@@ -1,4 +1,10 @@
+"use client";
+import { useState } from "react";
+import { Star } from "lucide-react";
+
 export default function FilterSidebar() {
+  const [ratingFilter, setRatingFilter] = useState<number | null>(null);
+
   return (
     <aside className="bg-white rounded-xl p-5 space-y-6 text-gray-500 border-gray-300 border-2">
       <div>
@@ -17,7 +23,29 @@ export default function FilterSidebar() {
 
       <div>
         <h3 className="font-semibold mb-2">Calificación</h3>
-        <p>⭐⭐⭐⭐⭐</p>
+        <div className="flex gap-1">
+          {Array.from({ length: 5 }).map((_, i) => {
+            const value = i+1; // mostrar de 5 a 1
+            return (
+              <button
+                key={value}
+                onClick={() => setRatingFilter(value)}
+                className="cursor-pointer"
+              >
+                <Star
+                  size={20}
+                  fill={ratingFilter !== null && value <= ratingFilter ? "#facc15" : "none"}
+                  stroke="#facc15"
+                />
+              </button>
+            );
+          })}
+        </div>
+        {ratingFilter && (
+          <div className="text-sm mt-1 text-gray-400">
+            Mostrando mentores con {ratingFilter} estrellas o más
+          </div>
+        )}
       </div>
 
       <div>

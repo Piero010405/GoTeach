@@ -1,7 +1,22 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import Marquee from "react-fast-marquee";
+import { Star } from "lucide-react";
 
+function Estrellas({ count }: { count: number }) {
+  return (
+    <div className="flex gap-1 text-yellow-500">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <Star
+          key={i}
+          size={18}
+          fill={i < count ? "#facc15" : "none"}
+          stroke="#facc15"
+        />
+      ))}
+    </div>
+  );
+}
 export default function MentorCarousel() {
   return (
     <div className="relative">
@@ -39,7 +54,7 @@ function MentorCard() {
       </p>
 
       <div className="flex justify-between items-center">
-        <div className="text-yellow-500 text-sm">⭐ 4.8</div>
+        <div className="text-yellow-500 text-sm flex items-center justify-center gap-2"><Estrellas count={4} /> 4.8</div>
         <span className="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">
           Disponible
         </span>
