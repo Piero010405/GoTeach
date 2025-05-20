@@ -1,103 +1,117 @@
-import Image from "next/image";
+/* eslint-disable @next/next/no-img-element */
+import Navbar from "../components/navbar";
+import MentorCarousel from "../components/MentorCarrousel";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="bg-[#F5FAFF] h-full min-h-screen">
+      <div className="h-fit bg-gradient-to-b from-blue-500 to-blue-900 text-white">
+        <Navbar />
+        <div className="max-w-5xl mx-auto px-4 py-18 text-center">
+          <h1 className="text-4xl sm:text-5xl font-bold mb-4 leading-tight">
+            Encuentra al mentor <br /> académico Ideal
+          </h1>
+          <p className="text-lg sm:text-xl mb-10">
+            Conéctate con tutores expertos para tutorías en una variedad de materias
+          </p>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+          <div className="bg-white max-w-md mx-auto rounded-md">
+            <input
+              type="text"
+              placeholder="Buscar Asesores"
+              className="w-full px-4 py-3 rounded-md text-black placeholder-gray-500 focus:outline-none shadow-lg"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </div>
+      <div className="pb-10">
+        <section className="bg-[#F5FAFF] py-15">
+          <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">Principales Mentores</h2>
+          <div className="w-2/3 mx-auto">
+            <MentorCarousel />
+          </div>
+        </section>
+        <section className="max-w-5xl mx-auto pb-15 px-6">
+          <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+            Categorías Populares
+          </h2>
+          <div className="flex flex-wrap justify-center gap-4">
+            {["Matemáticas", "Física", "Historia", "Química", "Lenguas", "Biología"].map((categoria, idx) => (
+              <button
+                key={idx}
+                className="bg-white text-gray-700 font-medium px-6 py-2 rounded-full border border-gray-300 shadow-sm hover:bg-blue-100 transition"
+              >
+                {categoria}
+              </button>
+            ))}
+          </div>
+        </section>
+        <section className="bg-blue-100 rounded-xl max-w-6xl mx-auto px-16 py-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+            
+            {/* Texto */}
+            <div className="text-center md:text-left md:w-2/3">
+              <h2 className="text-2xl font-bold text-gray-800 mb-4">Acerca de GoTeach</h2>
+              <p className="text-gray-700 mb-6 leading-relaxed">
+                Plataforma que facilita la conexión con mentores académicos profesionales para ayudarte a alcanzar tus metas educativas. Encuentra, agenda y aprende con confianza.
+              </p>
+              <button className="bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg shadow hover:bg-blue-700 transition-all">
+                ¿Cómo funciona GoTeach?
+              </button>
+            </div>
+
+            {/* Imagen */}
+            <div className="md:w-1/3 flex justify-center">
+              <img
+                src="/img/representacion-mentor.png"
+                alt="Mentor ilustrado"
+                className="max-w-xs md:max-w-sm w-auto h-60"
+              />
+            </div>
+          </div>
+        </section>
+      </div>
+      <footer className="bg-blue-900 text-white pt-10 pb-2 mt-10">
+        <div className="flex flex-col sm:flex-row justify-between gap-10 max-w-3/4 mx-auto px-6">
+          
+          {/* Branding */}
+          <div className="flex-1">
+            <div className="flex items-center gap-2 mb-2">
+              <img src="/img/logo.png" alt="Logo" className="w-8 h-8" />
+              <h2 className="text-2xl font-bold">GoTeach</h2>
+            </div>
+            <p className="text-sm text-blue-200">
+              Conecta con mentores académicos y alcanza tu máximo potencial educativo.
+            </p>
+          </div>
+
+          {/* Navegación */}
+          <div className="w-1/3">
+            <h3 className="font-semibold text-lg mb-3">Navegación</h3>
+            <ul className="space-y-2 text-sm text-blue-200">
+              <li><a className="hover:underline">Inicio</a></li>
+              <li><a className="hover:underline">Buscar mentores</a></li>
+              <li><a href="/contacto" className="hover:underline">Sé un mentor</a></li>
+              <li><a className="hover:underline">Ayuda & Soporte</a></li>
+            </ul>
+          </div>
+
+          {/* Información legal */}
+          <div className="w-1/5">
+            <h3 className="font-semibold text-lg mb-3">Legal</h3>
+            <ul className="space-y-2 text-sm text-blue-200">
+              <li><a className="hover:underline">Términos de uso</a></li>
+              <li><a className="hover:underline">Política de privacidad</a></li>
+              <li><a className="hover:underline">Contacto</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-10 border-t border-white text-center text-sm pt-2 text-blue-300">
+          © 2025 GoTeach. Todos los derechos reservados.
+        </div>
       </footer>
+
     </div>
   );
-}
+} 
