@@ -98,7 +98,7 @@ export default function PagoPage() {
           </label>
         </div>
 
-        <button onClick={() => router.push("/tutorias")} className="w-full bg-blue-600 text-white font-semibold py-3 rounded hover:bg-blue-700 transition cursor-pointer">
+        <button onClick={() => router.push("/confirmacion")} className="w-full bg-blue-600 text-white font-semibold py-3 rounded hover:bg-blue-700 transition cursor-pointer">
           Confirmar y Pagar
         </button>
       </div>
