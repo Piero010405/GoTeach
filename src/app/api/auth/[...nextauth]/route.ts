@@ -1,7 +1,8 @@
 import NextAuth from "next-auth";
+import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-export const authOptions = {
+const options: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: "Credenciales",
@@ -37,6 +38,7 @@ export const authOptions = {
 
         if (user) {
           // Nunca retornes la contraseña
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
           const { password, ...safeUser } = user;
           return safeUser;
         }
@@ -53,9 +55,9 @@ export const authOptions = {
   },
   callbacks: {
     async session({ session, token }) {
-      if (token) {
-        session.user.id = token.sub;
-        session.user.role = token.role;
+      if (token && session.user) {
+        session.user.id = token.sub!;
+        session.user.role = token.role as string;
       }
       return session;
     },
@@ -68,5 +70,5 @@ export const authOptions = {
   },
 };
 
-const handler = NextAuth(authOptions);
+const handler = NextAuth(options);
 export { handler as GET, handler as POST };

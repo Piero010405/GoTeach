@@ -7,7 +7,7 @@ import Navbar from "@/components/navbar";
 import ScheduleGrid from "@/components/ScheduleGrid";
 
 export default function AgendarPage() {
-  const { data: session, status } = useSession();
+  const { status } = useSession();
   const router = useRouter();
 
   useEffect(() => {
