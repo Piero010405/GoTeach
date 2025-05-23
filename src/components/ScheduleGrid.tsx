@@ -49,7 +49,7 @@ export default function WeeklyScheduler() {
 
           return (  
             <div
-              ref={refSetter}
+              ref={(el) => refSetter(el as HTMLElement)}
               className="w-full h-full rounded transition cursor-pointer hover:bg-blue-400"
               style={{
                 backgroundColor: bg,
