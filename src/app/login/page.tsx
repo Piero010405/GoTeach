@@ -100,14 +100,16 @@ export default function LoginPage() {
 
           {/* Botones de login social simulados */}
           <div className="flex justify-between gap-4">
-            <button className="flex-1 border px-4 py-2 rounded hover:bg-gray-100 bg-white">
-              <img src="/img/canvas.png" alt="Canvas" className="h-5 mx-auto" />
+             <button className="flex-1 border px-4 py-2 rounded hover:bg-gray-100 bg-white">
+              <img src="/img/canvas.png" alt="Canvas" className="h-6 w-auto object-contain mx-auto" />
             </button>
+
             <button className="flex-1 border px-4 py-2 rounded hover:bg-gray-100 bg-white">
-              <img src="/img/google.png" alt="Google" className="h-5 mx-auto" />
+              <img src="/img/google.png" alt="Google" className="h-6 w-auto object-contain mx-auto" />
             </button>
+
             <button className="flex-1 border px-4 py-2 rounded hover:bg-gray-100 bg-white">
-              <img src="/img/windows.png" alt="Microsoft" className="h-5 mx-auto" />
+              <img src="/img/microsoft.png" alt="Outlook" className="h-6 w-auto object-contain mx-auto" />
             </button>
           </div>
         </form>
